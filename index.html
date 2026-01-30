@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYC Transit Accessibility Isochrones</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        html, body, #map { height: 100%; margin: 0; padding: 0; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        const map = L.map('map').setView([40.7128, -74.0060], 11);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        const iso10Group = L.layerGroup().addTo(map);
+        const iso15Group = L.layerGroup().addTo(map);
+
+        // 10-min from GitHub raw
+        fetch('https://raw.githubusercontent.com/frankraDIUM/New-York/main/nyc_10min_isochrones_latlon.geojson')
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                console.log("10-min loaded — features:", data.features?.length || 0);
+                L.geoJSON(data, {
+                    style: { color: "#1E90FF", weight: 1.5, opacity: 0.8, fillColor: "#1E90FF", fillOpacity: 0.35 },
+                    onEachFeature: (feature, layer) => {
+                        if (feature.properties?.entrance_id) {
+                            layer.bindPopup(`10-min from entrance ${feature.properties.entrance_id}`);
+                        }
+                    }
+                }).addTo(iso10Group);
+            })
+            .catch(err => console.error("10-min error:", err));
+
+        // 15-min from GitHub raw
+        fetch('https://raw.githubusercontent.com/frankraDIUM/New-York/main/nyc_15min_isochrones_latlon.geojson')
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                console.log("15-min loaded — features:", data.features?.length || 0);
+                L.geoJSON(data, {
+                    style: { color: "#32CD32", weight: 1, opacity: 0.6, fillColor: "#32CD32", fillOpacity: 0.15 },
+                    onEachFeature: (feature, layer) => {
+                        if (feature.properties?.entrance_id) {
+                            layer.bindPopup(`15-min from entrance ${feature.properties.entrance_id}`);
+                        }
+                    }
+                }).addTo(iso15Group);
+            })
+            .catch(err => console.error("15-min error:", err));
+
+        L.control.layers({}, {
+            "10-min walk": iso10Group,
+            "15-min walk": iso15Group
+        }, { collapsed: false }).addTo(map);
+    </script>
+</body>
+</html>
