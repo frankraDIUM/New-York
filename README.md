@@ -163,7 +163,6 @@ NYC transit deserts are **not concentrated in low-income areas**; many occur in 
 * Integrate buses and GTFS schedules.
 * Add race/ethnicity and poverty indicators (ACS DP05).
 * Population-weighted accessibility metrics.
-* Publish public Kepler.gl map.
 
 ---
 
