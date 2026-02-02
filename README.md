@@ -3,11 +3,11 @@
 
 # 🚇 Transit Accessibility Analysis in New York City
 
-**PostGIS · pgRouting · OSMnx · GTFS · Kepler.gl** (https://bit.ly/3Oh2605)
+**PostGIS · pgRouting · OSMnx · GTFS · Kepler.gl** [![View](https://img.shields.io/badge/View-Click%20Here-blue)](https://bit.ly/3Oh2605)</button>
 
 ## Overview
 
-New York City operates one of the world’s largest rapid transit systems, yet **significant accessibility gaps remain**, particularly in outer boroughs. This project analyzes **walking-based access to subway entrances**, generates **10- and 15-minute walking isochrones**, and identifies **transit deserts**,census tracts where subway access exceeds a realistic walking threshold.
+New York City operates one of the world’s largest rapid transit systems, yet **significant accessibility gaps remain**, particularly in outer boroughs. This project analyzes **walking-based access to subway entrances**, generates **10- and 15-minute walking isochrones**, and identifies **transit deserts**, census tracts where subway access exceeds a realistic walking threshold.
 
 The analysis integrates:
 
