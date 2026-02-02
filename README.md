@@ -50,11 +50,11 @@ While **800 m (½ mile)** is often used as a standard walkable distance, NYC’s
 | ACS 2021 (5-yr)      | U.S. Census (DP03)         | —         | Population, median income |
 
 
-
+Walking Network of New York City
 <div>
   <img src="https://github.com/frankraDIUM/Transit-Accessibility-Analysis-in-New-York-City/blob/main/Figure_1.png"/>
 </div> 
----
+
 
 ## Methodology
 
@@ -149,6 +149,7 @@ While **800 m (½ mile)** is often used as a standard walkable distance, NYC’s
 **Key insight:**
 NYC transit deserts are **not concentrated in low-income areas**; many occur in **wealthier, auto-dependent neighborhoods**.
 
+Transit Accessibility map
 <div>
   <img src="https://github.com/frankraDIUM/Transit-Accessibility-Analysis-in-New-York-City/blob/main/kepler.gl.png"/>
 </div> 
